@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
 const updates = [
-  { type: 'NEW', color: '#16a34a', icon: '🎓', date: 'Mar 2026', title: 'PM Vidyalaxmi Scheme Extended', desc: 'Extended to cover NAAC B+ graded colleges for education loans with interest subvention.' },
-  { type: 'UPDATED', color: '#2563eb', icon: '💼', date: 'Mar 2026', title: 'MUDRA Loan Limit Increased', desc: 'Tarun category increased from ₹10 lakh to ₹20 lakh for technology startups and manufacturing.' },
-  { type: 'NEW', color: '#16a34a', icon: '🎓', date: 'Feb 2026', title: 'New AI & ML Scholarship by AICTE', desc: 'New scholarship for AI, ML, and Data Science students covering full tuition up to ₹2 lakh/year.' },
-  { type: 'EXTENDED', color: '#d97706', icon: '💼', date: 'Feb 2026', title: 'Stand-Up India Extended to 2028', desc: 'Continuing support for SC/ST and women entrepreneurs with loans from ₹10 lakh to ₹1 crore.' },
-  { type: 'LAUNCH', color: '#e85d04', icon: '🎓', date: 'Jan 2026', title: 'National Scholarship Portal 2.0', desc: 'Revamped NSP with Aadhaar-based authentication and real-time status tracking.' },
-  { type: 'UPDATED', color: '#2563eb', icon: '💼', date: 'Jan 2026', title: 'CGTMSE Coverage Expanded', desc: 'Expanded to include micro enterprises in retail sector with increased ₹5 crore ceiling.' },
+  { type: 'NEW', color: '#22C55E', icon: '🎓', date: 'Mar 2026', title: 'PM Vidyalaxmi Scheme Extended', desc: 'Extended to cover NAAC B+ graded colleges for education loans with interest subvention.' },
+  { type: 'UPDATED', color: '#3B82F6', icon: '💼', date: 'Mar 2026', title: 'MUDRA Loan Limit Increased', desc: 'Tarun category increased from ₹10 lakh to ₹20 lakh for technology startups and manufacturing.' },
+  { type: 'NEW', color: '#22C55E', icon: '🎓', date: 'Feb 2026', title: 'New AI & ML Scholarship by AICTE', desc: 'New scholarship for AI, ML, and Data Science students covering full tuition up to ₹2 lakh/year.' },
+  { type: 'EXTENDED', color: '#F59E0B', icon: '💼', date: 'Feb 2026', title: 'Stand-Up India Extended to 2028', desc: 'Continuing support for SC/ST and women entrepreneurs with loans from ₹10 lakh to ₹1 crore.' },
+  { type: 'LAUNCH', color: '#3B82F6', icon: '🎓', date: 'Jan 2026', title: 'National Scholarship Portal 2.0', desc: 'Revamped NSP with Aadhaar-based authentication and real-time status tracking.' },
+  { type: 'UPDATED', color: '#3B82F6', icon: '💼', date: 'Jan 2026', title: 'CGTMSE Coverage Expanded', desc: 'Expanded to include micro enterprises in retail sector with increased ₹5 crore ceiling.' },
 ];
 
 export default function UpdatesPage() {

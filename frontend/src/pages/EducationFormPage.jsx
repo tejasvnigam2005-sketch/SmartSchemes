@@ -35,7 +35,7 @@ export default function EducationFormPage() {
 
         <form onSubmit={submit} className="card animate-fade-up delay-1" style={{ padding: '32px 28px' }}>
           {error && (
-            <div style={{ background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)', borderRadius: '10px', padding: '10px 14px', marginBottom: '20px', color: '#dc2626', fontSize: '0.8125rem', fontWeight: 500, textAlign: 'center' }}>
+            <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '10px', padding: '10px 14px', marginBottom: '20px', color: '#EF4444', fontSize: '0.8125rem', fontWeight: 500, textAlign: 'center' }}>
               {error}
             </div>
           )}

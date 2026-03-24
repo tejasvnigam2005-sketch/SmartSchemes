@@ -15,7 +15,7 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50" style={{ background: '#1c3f6e', borderBottom: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>
+    <nav className="fixed top-0 left-0 right-0 z-50" style={{ background: '#1E3A8A', borderBottom: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>
       <div className="container">
         <div className="flex items-center justify-between" style={{ height: '64px' }}>
           {/* Logo */}
@@ -24,7 +24,7 @@ export default function Navbar() {
               🏛️
             </div>
             <span className="text-lg font-extrabold text-white tracking-tight hidden sm:block">
-              Smart<span style={{ color: '#e85d04' }}>Schemes</span>
+              Smart<span style={{ color: '#3B82F6' }}>Schemes</span>
             </span>
           </Link>
 
@@ -64,7 +64,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden animate-fade-in" style={{ background: '#1c3f6e', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="md:hidden animate-fade-in" style={{ background: '#1E3A8A', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
           <div className="container py-3 space-y-1">
             {links.map(link => (
               <Link
