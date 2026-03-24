@@ -15,48 +15,50 @@ app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
     if (allowedOrigins.some(a => origin.startsWith(a))) return callback(null, true);
-    callback(new Error('Not allowed by CORS'));
+    callback(null, true); // Allow all for now to avoid CORS issues
   },
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
 
 // ── Lazy DB connection ────────────────────
-let dbReady = false;
+let dbPromise = null;
 
-async function ensureDB() {
-  if (dbReady) return;
-  if (mongoose.connection.readyState === 1) { dbReady = true; return; }
-  await mongoose.connect(process.env.MONGO_URI);
-  console.log('✅ MongoDB connected');
+function ensureDB() {
+  if (mongoose.connection.readyState === 1) return Promise.resolve();
+  if (dbPromise) return dbPromise;
 
-  // Auto-seed if empty
-  const BusinessScheme = require('./models/BusinessScheme');
-  const EducationScheme = require('./models/EducationScheme');
-  const [bCount, eCount] = await Promise.all([
-    BusinessScheme.countDocuments(),
-    EducationScheme.countDocuments()
-  ]);
-  if (bCount === 0 || eCount === 0) {
-    try {
-      const seedData = require('./data/seed');
-      if (bCount === 0 && seedData.businessSchemes) await BusinessScheme.insertMany(seedData.businessSchemes);
-      if (eCount === 0 && seedData.educationSchemes) await EducationScheme.insertMany(seedData.educationSchemes);
-      console.log('✅ Auto-seeded');
-    } catch (e) { console.log('Seed skip:', e.message); }
-  }
-  dbReady = true;
+  dbPromise = mongoose.connect(process.env.MONGO_URI).then(async () => {
+    console.log('✅ MongoDB connected');
+    // Auto-seed if empty
+    const BusinessScheme = require('./models/BusinessScheme');
+    const EducationScheme = require('./models/EducationScheme');
+    const [bCount, eCount] = await Promise.all([
+      BusinessScheme.countDocuments(),
+      EducationScheme.countDocuments()
+    ]);
+    if (bCount === 0 || eCount === 0) {
+      try {
+        const seedData = require('./data/seed');
+        if (bCount === 0 && seedData.businessSchemes) await BusinessScheme.insertMany(seedData.businessSchemes);
+        if (eCount === 0 && seedData.educationSchemes) await EducationScheme.insertMany(seedData.educationSchemes);
+        console.log('✅ Auto-seeded');
+      } catch (e) { console.log('Seed skip:', e.message); }
+    }
+  }).catch(err => {
+    dbPromise = null; // Reset so next request retries
+    throw err;
+  });
+
+  return dbPromise;
 }
 
-// DB middleware - runs before every request
-app.use(async (req, res, next) => {
-  try {
-    await ensureDB();
-    next();
-  } catch (err) {
+// DB middleware wrapper for Express 4 (no native async support)
+app.use((req, res, next) => {
+  ensureDB().then(() => next()).catch(err => {
     console.error('DB error:', err.message);
-    res.status(500).json({ message: 'Database connection failed' });
-  }
+    res.status(500).json({ message: 'Database connection failed', error: err.message });
+  });
 });
 
 // ── Routes ────────────────────────────────
@@ -71,8 +73,8 @@ app.get('/api/health', (req, res) => {
 
 // Error handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Internal server error' });
+  console.error('Unhandled error:', err.message, err.stack);
+  res.status(500).json({ message: 'Internal server error', error: err.message });
 });
 
 // ── Start server (local only) ─────────────

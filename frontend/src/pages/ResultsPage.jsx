@@ -9,11 +9,11 @@ export default function ResultsPage() {
 
   if (!data) {
     return (
-      <div className="min-h-screen pt-[60px] flex items-center justify-center">
+      <div style={{ paddingTop: '64px', minHeight: '100vh', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="text-center animate-fade-up">
-          <p className="text-4xl mb-3">🔍</p>
-          <h2 className="text-xl font-bold text-slate-800 mb-1.5">No Results</h2>
-          <p className="text-[0.875rem] text-slate-400 mb-6">Fill the form first to get recommendations</p>
+          <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔍</div>
+          <h2 style={{ fontSize: '1.375rem', fontWeight: 800, color: 'var(--color-text-primary)', marginBottom: '8px' }}>No Results</h2>
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '24px' }}>Fill the form first to get recommendations</p>
           <Link to="/" className="btn-primary">Go Home</Link>
         </div>
       </div>
@@ -24,51 +24,48 @@ export default function ResultsPage() {
   const isBiz = category === 'business';
 
   return (
-    <div className="min-h-screen bg-white pt-[60px]">
-      <div className="section py-10 sm:py-14">
+    <div style={{ paddingTop: '64px', minHeight: '100vh', background: 'var(--color-surface)' }}>
+      <div className="container" style={{ padding: '40px 24px 64px' }}>
         {/* Header */}
-        <div className="text-center mb-10 animate-fade-up">
-          <div className="inline-flex items-center gap-2 bg-slate-50 rounded-full px-3.5 py-1 text-[0.75rem] text-slate-500 font-medium mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            {data.totalMatches} schemes matched
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight mb-1.5">
+        <div className="text-center animate-fade-up" style={{ marginBottom: '40px' }}>
+          <div className="section-tag" style={{ margin: '0 auto 16px' }}>Results</div>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.5px', marginBottom: '8px' }}>
             {isBiz ? 'Business' : 'Education'} Recommendations
           </h1>
-          <p className="text-[0.875rem] text-slate-400">
-            AI-ranked by relevance · Top {schemes.length} results
+          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
+            AI-ranked by relevance · {data.totalMatches} matched · Top {schemes.length} shown
           </p>
         </div>
 
-        {/* Comparison Table */}
+        {/* Comparison */}
         {schemes.length > 0 && (
-          <div className="mb-12 animate-fade-up delay-1">
-            <h2 className="text-[0.9375rem] font-bold text-slate-700 mb-4">Quick Comparison</h2>
+          <div className="animate-fade-up delay-1" style={{ marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '16px' }}>Quick Comparison</h2>
             <ComparisonTable schemes={schemes} schemeType={category} />
           </div>
         )}
 
-        {/* Scheme Cards */}
+        {/* Cards */}
         {schemes.length > 0 ? (
-          <div className="mb-10">
-            <h2 className="text-[0.9375rem] font-bold text-slate-700 mb-5">Detailed Results</h2>
-            <div className="grid lg:grid-cols-2 gap-5">
+          <div style={{ marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '16px' }}>Detailed Results</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 480px), 1fr))', gap: '16px' }}>
               {schemes.map((scheme, idx) => (
                 <SchemeCard key={scheme._id || idx} scheme={scheme} index={idx} schemeType={category} />
               ))}
             </div>
           </div>
         ) : (
-          <div className="text-center py-16 animate-fade-up">
-            <p className="text-4xl mb-3">😔</p>
-            <h3 className="text-lg font-bold text-slate-700 mb-1.5">No matching schemes</h3>
-            <p className="text-[0.875rem] text-slate-400">Try adjusting your criteria</p>
+          <div className="text-center animate-fade-up" style={{ padding: '64px 0' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '12px' }}>😔</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '6px' }}>No matching schemes</h3>
+            <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Try adjusting your criteria</p>
           </div>
         )}
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 animate-fade-up delay-3">
-          <button onClick={() => navigate(-1)} className="btn-secondary">← Modify Search</button>
+        <div className="animate-fade-up delay-3" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '32px' }}>
+          <button onClick={() => navigate(-1)} className="btn-outline">← Modify Search</button>
           <Link to="/" className="btn-primary">Back to Home</Link>
         </div>
       </div>
