@@ -4,7 +4,7 @@ export default function ComparisonTable({ schemes, schemeType }) {
   const scoreClass = (s) =>
     s >= 80 ? 'score-excellent' : s >= 60 ? 'score-good' : s >= 40 ? 'score-fair' : 'score-low';
 
-  const medals = ['🥇', '🥈', '🥉'];
+  const medals = ['#1', '#2', '#3'];
 
   return (
     <div style={{ overflowX: 'auto', borderRadius: '16px', border: '1px solid #E5E7EB' }}>

@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 const updates = [
-  { type: 'NEW', color: '#10B981', icon: '🎓', date: 'Mar 2026', title: 'PM Vidyalaxmi Scheme Extended', desc: 'Extended to cover NAAC B+ graded colleges for education loans with interest subvention.' },
-  { type: 'UPDATED', color: '#3B82F6', icon: '💼', date: 'Mar 2026', title: 'MUDRA Loan Limit Increased', desc: 'Tarun category increased from ₹10 lakh to ₹20 lakh for technology startups and manufacturing.' },
-  { type: 'NEW', color: '#10B981', icon: '🎓', date: 'Feb 2026', title: 'New AI & ML Scholarship by AICTE', desc: 'New scholarship for AI, ML, and Data Science students covering full tuition up to ₹2 lakh/year.' },
-  { type: 'EXTENDED', color: '#F59E0B', icon: '💼', date: 'Feb 2026', title: 'Stand-Up India Extended to 2028', desc: 'Continuing support for SC/ST and women entrepreneurs with loans from ₹10 lakh to ₹1 crore.' },
-  { type: 'LAUNCH', color: '#3B82F6', icon: '🎓', date: 'Jan 2026', title: 'National Scholarship Portal 2.0', desc: 'Revamped NSP with Aadhaar-based authentication and real-time status tracking.' },
-  { type: 'UPDATED', color: '#3B82F6', icon: '💼', date: 'Jan 2026', title: 'CGTMSE Coverage Expanded', desc: 'Expanded to include micro enterprises in retail sector with increased ₹5 crore ceiling.' },
+  { type: 'NEW', color: '#10B981', svgD: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347', date: 'Mar 2026', title: 'PM Vidyalaxmi Scheme Extended', desc: 'Extended to cover NAAC B+ graded colleges for education loans with interest subvention.' },
+  { type: 'UPDATED', color: '#3B82F6', svgD: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', date: 'Mar 2026', title: 'MUDRA Loan Limit Increased', desc: 'Tarun category increased from ₹10 lakh to ₹20 lakh for technology startups and manufacturing.' },
+  { type: 'NEW', color: '#10B981', svgD: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347', date: 'Feb 2026', title: 'New Scholarship by AICTE', desc: 'New scholarship for students in emerging tech fields covering full tuition up to ₹2 lakh/year.' },
+  { type: 'EXTENDED', color: '#F59E0B', svgD: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', date: 'Feb 2026', title: 'Stand-Up India Extended to 2028', desc: 'Continuing support for SC/ST and women entrepreneurs with loans from ₹10 lakh to ₹1 crore.' },
+  { type: 'LAUNCH', color: '#3B82F6', svgD: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347', date: 'Jan 2026', title: 'National Scholarship Portal 2.0', desc: 'Revamped NSP with Aadhaar-based authentication and real-time status tracking.' },
+  { type: 'UPDATED', color: '#3B82F6', svgD: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', date: 'Jan 2026', title: 'CGTMSE Coverage Expanded', desc: 'Expanded to include micro enterprises in retail sector with increased ₹5 crore ceiling.' },
 ];
 
 export default function UpdatesPage() {
@@ -20,7 +20,6 @@ export default function UpdatesPage() {
         borderBottom: '1px solid rgba(11,110,79,0.06)',
       }}>
         <div className="container animate-fade-up" style={{ textAlign: 'center' }}>
-          <div className="section-tag" style={{ margin: '0 auto 16px' }}>Feed</div>
           <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827', letterSpacing: '-0.5px', marginBottom: '8px' }}>Latest Updates</h1>
           <p style={{ fontSize: '0.9375rem', color: '#6B7280' }}>Recent changes to government schemes</p>
         </div>
@@ -49,9 +48,11 @@ export default function UpdatesPage() {
                 width: '40px', height: '40px', borderRadius: '12px',
                 background: 'rgba(11,110,79,0.06)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1.125rem', flexShrink: 0,
+                flexShrink: 0,
               }}>
-                {u.icon}
+                <svg width="18" height="18" fill="none" stroke="#0B6E4F" viewBox="0 0 24 24" strokeWidth="1.75">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={u.svgD} />
+                </svg>
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>

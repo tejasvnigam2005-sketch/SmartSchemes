@@ -19,7 +19,7 @@ export default function ProfilePage() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: '1.5rem', margin: '0 auto 16px',
           }}>
-            🔒
+            <svg width="24" height="24" fill="none" stroke="#0B6E4F" viewBox="0 0 24 24" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
           </div>
           <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111827', marginBottom: '6px' }}>Login Required</h2>
           <p style={{ fontSize: '0.875rem', color: '#9CA3AF', marginBottom: '24px' }}>Please login to view your profile</p>
@@ -120,7 +120,7 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div style={{ textAlign: 'center', padding: '24px 0', color: '#D1D5DB' }}>
-              <p style={{ fontSize: '1.5rem', marginBottom: '4px' }}>📋</p>
+              <p style={{ fontSize: '1.5rem', marginBottom: '4px' }}><svg width="24" height="24" fill="none" stroke="#D1D5DB" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" /></svg></p>
               <p style={{ fontSize: '0.8125rem' }}>No preferences saved yet</p>
             </div>
           )}
@@ -143,7 +143,12 @@ export default function ProfilePage() {
                   transition: 'all 0.2s ease',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <span style={{ fontSize: '1rem' }}>{s.category === 'business' ? '💼' : '🎓'}</span>
+                    <span style={{ display: 'flex' }}>
+                      {s.category === 'business'
+                        ? <svg width="16" height="16" fill="none" stroke="#0B6E4F" viewBox="0 0 24 24" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        : <svg width="16" height="16" fill="none" stroke="#0B6E4F" viewBox="0 0 24 24" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347" /></svg>
+                      }
+                    </span>
                     <div>
                       <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#374151', textTransform: 'capitalize' }}>{s.category} Search</p>
                       <p style={{ fontSize: '0.6875rem', color: '#9CA3AF' }}>
@@ -163,7 +168,7 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div style={{ textAlign: 'center', padding: '24px 0', color: '#D1D5DB' }}>
-              <p style={{ fontSize: '1.5rem', marginBottom: '4px' }}>🔍</p>
+              <p style={{ fontSize: '1.5rem', marginBottom: '4px' }}><svg width="24" height="24" fill="none" stroke="#D1D5DB" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></p>
               <p style={{ fontSize: '0.8125rem' }}>No searches yet</p>
             </div>
           )}

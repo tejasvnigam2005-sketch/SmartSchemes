@@ -34,9 +34,8 @@ export default function BusinessFormPage() {
         borderBottom: '1px solid rgba(11,110,79,0.06)',
       }}>
         <div className="container animate-fade-up" style={{ textAlign: 'center' }}>
-          <div className="section-tag" style={{ margin: '0 auto 16px' }}>Business</div>
           <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827', letterSpacing: '-0.5px', marginBottom: '8px' }}>Business Schemes</h1>
-          <p style={{ fontSize: '0.9375rem', color: '#6B7280', maxWidth: '400px', margin: '0 auto' }}>Tell us about your business for AI-powered recommendations</p>
+          <p style={{ fontSize: '0.9375rem', color: '#6B7280', maxWidth: '400px', margin: '0 auto' }}>Tell us about your business to get personalized recommendations</p>
         </div>
       </div>
 

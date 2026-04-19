@@ -5,35 +5,35 @@ import Footer from '../components/Footer';
 const steps = [
   {
     num: '01',
-    icon: '📝',
+    svgPath: 'M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10',
     title: 'Fill Your Profile',
     desc: 'Provide basic details like age, income, state, and occupation type. Choose between business or education schemes.',
     color: '#0B6E4F',
   },
   {
     num: '02',
-    icon: '🤖',
-    title: 'AI Processes Your Data',
-    desc: 'Our NLP engine cross-references your profile against 2,000+ government schemes from Central and State databases in real-time.',
+    svgPath: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z',
+    title: 'Profile Analysis',
+    desc: 'Your profile is cross-referenced against 2,000+ government schemes from Central and State databases in real-time.',
     color: '#3B82F6',
   },
   {
     num: '03',
-    icon: '🎯',
+    svgPath: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
     title: 'Relevance Scoring',
     desc: 'Each scheme is scored 0–100 based on how closely it matches your eligibility criteria. Higher scores mean better fit.',
     color: '#7C3AED',
   },
   {
     num: '04',
-    icon: '📊',
+    svgPath: 'M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z',
     title: 'Compare & Decide',
     desc: 'View your top recommendations, compare them side-by-side, explore benefits, eligibility, and application steps.',
     color: '#D97706',
   },
   {
     num: '05',
-    icon: '🔊',
+    svgPath: 'M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z',
     title: 'Listen in Your Language',
     desc: 'Use Text-to-Speech to hear scheme details in Hindi or English. Accessibility is built-in for every citizen.',
     color: '#10B981',
@@ -41,10 +41,10 @@ const steps = [
 ];
 
 const techStack = [
-  { icon: '🧠', label: 'NLP Engine', desc: 'Natural Language Processing to parse & match schemes' },
-  { icon: '📡', label: 'Live Data Sync', desc: 'Connected to official government portals for real-time updates' },
-  { icon: '🔒', label: 'Privacy First', desc: 'No data stored — your information is processed and discarded' },
-  { icon: '🌐', label: 'Multi-lingual', desc: 'Hindi and English support with voice readout' },
+  { svgPath: 'M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5m4.75-11.396c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 14.4', label: 'Smart Engine', desc: 'Intelligent matching to parse & rank schemes' },
+  { svgPath: 'M8.288 15.038a5.25 5.25 0 010-7.424m7.424 7.424a5.25 5.25 0 000-7.424M5.636 17.69a9 9 0 010-12.728m12.728 12.728a9 9 0 000-12.728', label: 'Live Data Sync', desc: 'Connected to official government portals' },
+  { svgPath: 'M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z', label: 'Privacy First', desc: 'No data stored — processed and discarded' },
+  { svgPath: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582', label: 'Multi-lingual', desc: 'Hindi and English with voice readout' },
 ];
 
 function useScrollReveal() {
@@ -111,14 +111,13 @@ export default function HowItWorksPage() {
         position: 'relative', zIndex: 1,
       }}>
         <div className="container animate-fade-up" style={{ textAlign: 'center' }}>
-          <div className="section-tag" style={{ margin: '0 auto 16px' }}>How It Works</div>
           <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 800, color: '#111827', letterSpacing: '-0.5px', marginBottom: '12px' }}>
             From Your Profile to<br />Perfect Scheme Match
           </h1>
           <p style={{ fontSize: '0.9375rem', color: '#6B7280', maxWidth: '480px', margin: '0 auto 24px', lineHeight: 1.7 }}>
-            A transparent, 5-step AI pipeline that finds the best government schemes for you — in seconds.
+            A transparent, 5-step process that finds the best government schemes for you — in seconds.
           </p>
-          <img src="/images/how-it-works-hero.png" alt="SmartSchemes AI workflow pipeline"
+          <img src="/images/how-it-works-hero.png" alt="SmartSchemes workflow pipeline"
             style={{
               width: '260px', height: 'auto', margin: '0 auto',
               filter: 'drop-shadow(0 10px 25px rgba(11,110,79,0.1))',
@@ -174,7 +173,9 @@ export default function HowItWorksPage() {
                   transition: 'all 0.3s ease',
                   position: 'relative',
                 }}>
-                  {step.icon}
+                  <svg width="24" height="24" fill="none" stroke={step.color} viewBox="0 0 24 24" strokeWidth="1.75">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={step.svgPath} />
+                  </svg>
                   {/* Pulse ring */}
                   <div style={{
                     position: 'absolute',
@@ -263,15 +264,15 @@ export default function HowItWorksPage() {
               position: 'relative',
             }}>
               {[
-                { label: 'User Input', icon: '👤', bg: 'rgba(16,185,129,0.15)' },
-                null, // arrow
-                { label: 'API Gateway', icon: '🔗', bg: 'rgba(59,130,246,0.15)' },
+                { label: 'User Input', svgD: 'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0', bg: 'rgba(16,185,129,0.15)' },
                 null,
-                { label: 'AI Engine', icon: '🧠', bg: 'rgba(124,58,237,0.15)' },
+                { label: 'API Gateway', svgD: 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244', bg: 'rgba(59,130,246,0.15)' },
                 null,
-                { label: 'Gov Database', icon: '🏛️', bg: 'rgba(217,119,6,0.15)' },
+                { label: 'Smart Engine', svgD: 'M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5', bg: 'rgba(124,58,237,0.15)' },
                 null,
-                { label: 'Results', icon: '📊', bg: 'rgba(16,185,129,0.15)' },
+                { label: 'Gov Database', svgD: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332', bg: 'rgba(217,119,6,0.15)' },
+                null,
+                { label: 'Results', svgD: 'M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9', bg: 'rgba(16,185,129,0.15)' },
               ].map((item, i) => {
                 if (!item) {
                   return (
@@ -291,7 +292,11 @@ export default function HowItWorksPage() {
                     border: '1px solid rgba(255,255,255,0.05)',
                     transition: 'all 0.3s ease',
                   }}>
-                    <div style={{ fontSize: '1.25rem', marginBottom: '6px' }}>{item.icon}</div>
+                    <div style={{ marginBottom: '6px' }}>
+                      <svg width="20" height="20" fill="none" stroke="rgba(255,255,255,0.8)" viewBox="0 0 24 24" strokeWidth="1.75">
+                        <path strokeLinecap="round" strokeLinejoin="round" d={item.svgD} />
+                      </svg>
+                    </div>
                     <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: 'rgba(255,255,255,0.7)', whiteSpace: 'nowrap' }}>{item.label}</p>
                   </div>
                 );
@@ -324,7 +329,11 @@ export default function HowItWorksPage() {
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.06)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
               >
-                <div style={{ fontSize: '1.75rem', marginBottom: '10px' }}>{tech.icon}</div>
+                <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+                  <svg width="28" height="28" fill="none" stroke="#0B6E4F" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={tech.svgPath} />
+                  </svg>
+                </div>
                 <h4 style={{ fontSize: '0.875rem', fontWeight: 700, color: '#111827', marginBottom: '4px' }}>{tech.label}</h4>
                 <p style={{ fontSize: '0.75rem', color: '#9CA3AF', lineHeight: 1.5 }}>{tech.desc}</p>
               </div>

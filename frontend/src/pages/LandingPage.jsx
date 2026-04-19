@@ -4,33 +4,26 @@ import Footer from '../components/Footer';
 
 const topSchemes = [
   {
-    icon: '🌾',
     tags: [{ label: 'FARMER', color: '#0B6E4F' }],
     title: 'PM-Kisan Samman Nidhi',
     desc: 'Direct income support of ₹6,000 per year to all landholding farmer families across the country.',
     benefits: ['₹6,000 annual direct benefit', 'Direct Bank Transfer (DBT)'],
+    iconPath: 'M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2v0M3 7l9-4 9 4',
   },
   {
-    icon: '🚀',
     tags: [{ label: 'STARTUP', color: '#3B82F6' }],
     title: 'Startup India Seed Fund',
     desc: 'Financial assistance to startups for proof of concept, prototype development, and product trials.',
     benefits: ['Up to ₹20 Lakhs grant', 'Equity free initial funding'],
+    iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
   },
   {
-    icon: '💼',
     tags: [{ label: 'MSME', color: '#0B6E4F' }, { label: 'MUDRA', color: '#D97706' }],
     title: 'PMMY - Mudra Yojana',
     desc: 'Loans up to ₹10 Lakhs to non-corporate, non-farm small/micro enterprises for business growth.',
     benefits: ['No collateral required', 'Low interest rates'],
+    iconPath: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
   },
-];
-
-const features = [
-  { icon: '🤖', title: 'AI Matching', desc: 'Smart relevance scoring ranks schemes by your profile' },
-  { icon: '⚡', title: 'Instant Results', desc: 'Get personalized recommendations in seconds' },
-  { icon: '🔍', title: 'Compare Easily', desc: 'Side-by-side comparison of top matching schemes' },
-  { icon: '🔊', title: 'Voice Support', desc: 'Listen to scheme details in Hindi or English' },
 ];
 
 function useScrollReveal() {
@@ -111,9 +104,6 @@ export default function LandingPage() {
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="animate-fade-up" style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto', marginBottom: '48px' }}>
-            <div className="section-tag" style={{ margin: '0 auto 20px' }}>
-              Powered By Advanced AI
-            </div>
             <h1 style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
               fontWeight: 800,
@@ -283,9 +273,11 @@ export default function LandingPage() {
                   width: '44px', height: '44px', borderRadius: '12px',
                   background: 'rgba(11,110,79,0.06)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.25rem', marginBottom: '14px',
+                  marginBottom: '14px',
                 }}>
-                  {scheme.icon}
+                  <svg width="20" height="20" fill="none" stroke="#0B6E4F" viewBox="0 0 24 24" strokeWidth="1.75">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={scheme.iconPath} />
+                  </svg>
                 </div>
 
                 {/* Tags */}
@@ -362,48 +354,19 @@ export default function LandingPage() {
               }} />
               <div style={{ position: 'relative', zIndex: 1, padding: '40px 32px' }}>
                 <div style={{
-                  fontSize: '4rem', fontWeight: 900,
-                  textAlign: 'center', color: '#fff',
-                  marginBottom: '20px',
-                  textShadow: '0 2px 20px rgba(0,0,0,0.2)',
+                  textAlign: 'center',
+                  marginBottom: '28px',
                   animation: 'float 6s ease-in-out infinite',
                 }}>
-                  AI
+                  <svg width="64" height="64" fill="none" stroke="rgba(255,255,255,0.9)" viewBox="0 0 24 24" strokeWidth="1.5" style={{ margin: '0 auto' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
                 </div>
-                <div style={{
-                  background: 'rgba(255,255,255,0.12)',
-                  borderRadius: '16px',
-                  padding: '16px 20px',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#fff' }}>98%</div>
-                  </div>
-                  <p style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '24px' }}>
+                  <div style={{ fontSize: '2.25rem', fontWeight: 800, color: '#fff', marginBottom: '6px', textAlign: 'center' }}>98%</div>
+                  <p style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.5, textAlign: 'center' }}>
                     Success rate in identifying eligible schemes
                   </p>
-                </div>
-
-                {/* Trust badge */}
-                <div style={{
-                  position: 'absolute', bottom: '20px', right: '20px',
-                  background: 'rgba(255,255,255,0.15)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: '12px',
-                  padding: '10px 14px',
-                  display: 'flex', alignItems: 'center', gap: '8px',
-                }}>
-                  <div style={{
-                    width: '24px', height: '24px', borderRadius: '50%',
-                    background: '#10B981',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <svg width="12" height="12" fill="#fff" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#fff' }}>Trust Verified</span>
                 </div>
               </div>
             </div>
@@ -418,10 +381,10 @@ export default function LandingPage() {
                 letterSpacing: '-0.5px',
                 marginBottom: '16px',
               }}>
-                The AI Advantage in<br />Citizen Welfare
+                Smart Scheme Discovery<br />for Every Citizen
               </h2>
               <p style={{ fontSize: '0.9375rem', color: '#6B7280', lineHeight: 1.7, marginBottom: '28px' }}>
-                Gone are the days of manual searching through endless PDF documents. SmartSchemes uses natural language processing to match your specific profile with the latest updates from the Government of India.
+                No more searching through endless PDF documents. SmartSchemes instantly matches your profile against thousands of active government schemes from Central and State portals.
               </p>
 
               <div className="feature-sub-grid" style={{ marginBottom: '28px' }}>

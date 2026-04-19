@@ -39,7 +39,7 @@ export default function Navbar() {
               color: '#fff', fontSize: '0.875rem', fontWeight: 700,
               boxShadow: '0 2px 8px rgba(11,110,79,0.2)',
             }}>
-              🏛️
+              <svg width="16" height="16" fill="#fff" viewBox="0 0 24 24"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18" /></svg>
             </div>
             <span style={{ fontSize: '1.125rem', fontWeight: 800, color: '#111827', letterSpacing: '-0.5px' }}>
               Smart<span style={{ color: '#0B6E4F' }}>Schemes</span>

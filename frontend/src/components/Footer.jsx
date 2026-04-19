@@ -14,14 +14,14 @@ export default function Footer() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: '#fff', fontSize: '0.75rem', fontWeight: 700,
               }}>
-                🏛️
+                <svg width="14" height="14" fill="#fff" viewBox="0 0 24 24"><path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18" /></svg>
               </div>
               <span style={{ fontSize: '1rem', fontWeight: 800, color: '#111827' }}>
                 Smart<span style={{ color: '#0B6E4F' }}>Schemes</span>
               </span>
             </div>
             <p style={{ fontSize: '0.8125rem', color: '#6B7280', lineHeight: 1.7, maxWidth: '280px', marginBottom: '20px' }}>
-              Empowering Indian citizens through transparent and efficient access to government opportunities. Our AI-driven platform ensures you never miss a benefit you're eligible for.
+              Empowering Indian citizens through transparent and efficient access to government opportunities. Our platform ensures you never miss a benefit you’re eligible for.
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
               <a href="#" style={{
