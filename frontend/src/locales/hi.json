@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "home": "होम",
+    "explore": "योजनाएं खोजें",
+    "howItWorks": "कैसे काम करता है",
+    "updates": "अपडेट",
+    "dashboard": "डैशबोर्ड",
+    "search": "योजनाएं खोजें..."
+  },
+  "lang": {
+    "switch": "English",
+    "current": "हिंदी"
+  },
+  "dashboard": {
+    "title": "मेरा डैशबोर्ड",
+    "subtitle": "आपका व्यक्तिगत योजना ट्रैकर",
+    "savedSchemes": "सहेजी गई योजनाएं",
+    "recentlyViewed": "हाल ही में देखी गईं",
+    "applicationProgress": "आवेदन प्रगति",
+    "noSaved": "अभी तक कोई योजना सहेजी नहीं गई",
+    "noSavedDesc": "किसी भी योजना कार्ड पर बुकमार्क आइकन क्लिक करें।",
+    "noRecent": "हाल ही में कोई योजना नहीं देखी गई",
+    "noRecentDesc": "आपके द्वारा देखी गई योजनाएं यहाँ स्वचालित रूप से दिखाई देंगी।",
+    "noProgress": "कोई आवेदन प्रगति में नहीं है",
+    "noProgressDesc": "किसी भी योजना कार्ड से आवेदन गाइड शुरू करें।",
+    "exploreSchemes": "योजनाएं खोजें",
+    "remove": "हटाएं",
+    "viewAll": "सब देखें",
+    "stepsCompleted": "चरण पूर्ण",
+    "of": "में से",
+    "viewedOn": "देखा",
+    "savedOn": "सहेजा",
+    "clearAll": "सब साफ करें",
+    "schemeSaved": "योजना सहेजी गई!",
+    "schemeRemoved": "सहेजी गई योजनाओं से हटाया गया"
+  },
+  "scheme": {
+    "save": "सहेजें",
+    "saved": "सहेजा गया",
+    "benefits": "लाभ",
+    "eligibility": "पात्रता",
+    "howToApply": "आवेदन कैसे करें",
+    "requiredDocs": "आवश्यक दस्तावेज़",
+    "details": "विवरण →",
+    "less": "← कम",
+    "applyGuide": "आवेदन गाइड",
+    "website": "वेबसाइट",
+    "ongoing": "जारी",
+    "excellent": "उत्कृष्ट",
+    "good": "अच्छा",
+    "fair": "ठीक",
+    "partial": "आंशिक"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गड़बड़ हो गई",
+    "retry": "पुनः प्रयास करें",
+    "close": "बंद करें",
+    "back": "वापस",
+    "next": "अगला",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "sort": "क्रमबद्ध करें",
+    "share": "साझा करें"
+  }
+}

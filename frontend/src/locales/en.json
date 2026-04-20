@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "home": "Home",
+    "explore": "Explore Schemes",
+    "howItWorks": "How It Works",
+    "updates": "Updates",
+    "dashboard": "Dashboard",
+    "search": "Search schemes..."
+  },
+  "lang": {
+    "switch": "हिंदी",
+    "current": "English"
+  },
+  "dashboard": {
+    "title": "My Dashboard",
+    "subtitle": "Your personalised scheme tracker",
+    "savedSchemes": "Saved Schemes",
+    "recentlyViewed": "Recently Viewed",
+    "applicationProgress": "Application Progress",
+    "noSaved": "No saved schemes yet",
+    "noSavedDesc": "Click the bookmark icon on any scheme card to save it here.",
+    "noRecent": "No recently viewed schemes",
+    "noRecentDesc": "Schemes you view will appear here automatically.",
+    "noProgress": "No applications in progress",
+    "noProgressDesc": "Start an application guide from any scheme card to track your progress.",
+    "exploreSchemes": "Explore Schemes",
+    "remove": "Remove",
+    "viewAll": "View All",
+    "stepsCompleted": "steps completed",
+    "of": "of",
+    "viewedOn": "Viewed",
+    "savedOn": "Saved",
+    "clearAll": "Clear All",
+    "schemeSaved": "Scheme saved!",
+    "schemeRemoved": "Removed from saved"
+  },
+  "scheme": {
+    "save": "Save",
+    "saved": "Saved",
+    "benefits": "Benefits",
+    "eligibility": "Eligibility",
+    "howToApply": "How to Apply",
+    "requiredDocs": "Required Documents",
+    "details": "Details →",
+    "less": "← Less",
+    "applyGuide": "Apply Guide",
+    "website": "Website",
+    "ongoing": "Ongoing",
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
+    "partial": "Partial"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "share": "Share"
+  }
+}
