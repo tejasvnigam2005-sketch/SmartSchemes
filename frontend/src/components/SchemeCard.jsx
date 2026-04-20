@@ -130,6 +130,49 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
                 ))}
               </div>
             </div>
+
+            {/* Required Documents — inline from recommend API */}
+            {scheme.requiredDocuments?.length > 0 && (
+              <div>
+                <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px' }}>Required Documents</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {scheme.requiredDocuments.map((doc, i) => (
+                    <div key={i} style={{
+                      background: 'rgba(11,110,79,0.02)',
+                      border: '1px solid rgba(11,110,79,0.08)',
+                      borderRadius: '10px',
+                      padding: '12px 14px',
+                      transition: 'all 0.2s ease',
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                        <svg style={{ width: '14px', height: '14px', flexShrink: 0, color: '#0B6E4F' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#111827' }}>{doc.name}</span>
+                      </div>
+                      <p style={{ fontSize: '0.75rem', color: '#6B7280', lineHeight: 1.6, margin: '0 0 6px 22px' }}>{doc.description}</p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginLeft: '22px' }}>
+                        <span style={{
+                          fontSize: '0.6875rem', padding: '3px 8px', borderRadius: '6px',
+                          background: 'rgba(59,130,246,0.06)', color: '#3B82F6',
+                          border: '1px solid rgba(59,130,246,0.1)',
+                        }}>
+                          ⏱ {doc.estimatedTime}
+                        </span>
+                        <span style={{
+                          fontSize: '0.6875rem', padding: '3px 8px', borderRadius: '6px',
+                          background: 'rgba(11,110,79,0.05)', color: '#0B6E4F',
+                          border: '1px solid rgba(11,110,79,0.1)',
+                          maxWidth: '100%', lineHeight: 1.4,
+                        }}>
+                          {doc.howToObtain}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const BusinessScheme = require('../models/BusinessScheme');
 const EducationScheme = require('../models/EducationScheme');
+const { getRequiredDocuments } = require('../utils/documentHelper');
 const router = express.Router();
 
 // ─── Relevance Scoring Engine ───────────────────────────────────────
@@ -122,10 +123,16 @@ router.post('/', async (req, res) => {
     // Sort by relevance and return top results
     scoredSchemes.sort((a, b) => b.relevanceScore - a.relevanceScore);
 
+    // Attach required documents to each scheme
+    const enriched = scoredSchemes.slice(0, 5).map(scheme => ({
+      ...scheme,
+      requiredDocuments: getRequiredDocuments(scheme, category)
+    }));
+
     res.json({
       category,
       totalMatches: scoredSchemes.length,
-      results: scoredSchemes.slice(0, 5)
+      results: enriched
     });
   } catch (error) {
     console.error('Recommendation error:', error);
