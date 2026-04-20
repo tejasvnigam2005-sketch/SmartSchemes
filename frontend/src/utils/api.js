@@ -31,4 +31,8 @@ export const login = (data) => API.post('/auth/login', data);
 export const signup = (data) => API.post('/auth/register', data);
 export const getMe = () => API.get('/auth/me');
 
+// Scheme Guide APIs
+export const getDocumentChecklist = (schemeType, schemeId) => API.get(`/scheme-guide/documents/${schemeType}/${schemeId}`);
+export const getApplicationGuide = (schemeType, schemeId) => API.get(`/scheme-guide/steps/${schemeType}/${schemeId}`);
+
 export default API;

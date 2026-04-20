@@ -65,6 +65,7 @@ app.use((req, res, next) => {
 app.use('/api/recommend', require('./routes/recommend'));
 app.use('/api/business-schemes', require('./routes/businessSchemes'));
 app.use('/api/education-schemes', require('./routes/educationSchemes'));
+app.use('/api/scheme-guide', require('./routes/schemeGuide'));
 
 // Health check
 app.get('/api/health', (req, res) => {

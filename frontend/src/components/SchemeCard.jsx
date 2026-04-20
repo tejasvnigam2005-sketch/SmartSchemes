@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import TTS from '../utils/tts';
+import SchemeGuideModal from './SchemeGuideModal';
 
 export default function SchemeCard({ scheme, index = 0, schemeType = 'business' }) {
   const [playing, setPlaying] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [lang, setLang] = useState('en');
+  const [guideOpen, setGuideOpen] = useState(false);
 
   const handleTTS = () => {
     const text = TTS.schemeToSpeech(scheme, lang);
@@ -24,7 +26,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
   const scoreLabel = (s) =>
     s >= 80 ? 'Excellent' : s >= 60 ? 'Good' : s >= 40 ? 'Fair' : 'Partial';
 
-  return (
+  return (<>
     <div
       className="scheme-card animate-fade-up"
       style={{ animationDelay: `${index * 0.08}s`, padding: 0, overflow: 'hidden' }}
@@ -135,6 +137,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #F3F4F6',
+          flexWrap: 'wrap', gap: '8px',
         }}>
           <button
             onClick={() => setExpanded(!expanded)}
@@ -148,7 +151,20 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
             {expanded ? '← Less' : 'Details →'}
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+            {/* Apply Guide button — only shown when scheme has a DB id */}
+            {scheme._id && (
+              <button
+                onClick={() => setGuideOpen(true)}
+                className="scheme-guide-btn"
+                title="Document checklist &amp; step-by-step guide"
+              >
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                Apply Guide
+              </button>
+            )}
             <button
               onClick={() => setLang(l => l === 'en' ? 'hi' : 'en')}
               style={{
@@ -172,5 +188,14 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
         </div>
       </div>
     </div>
-  );
+
+    {/* Scheme Guide Modal */}
+    {guideOpen && scheme._id && (
+      <SchemeGuideModal
+        scheme={scheme}
+        schemeType={schemeType}
+        onClose={() => setGuideOpen(false)}
+      />
+    )}
+  </>);
 }
