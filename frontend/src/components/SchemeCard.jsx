@@ -1,12 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TTS from '../utils/tts';
 import SchemeGuideModal from './SchemeGuideModal';
+import { useLanguage } from '../context/LanguageContext';
+import { useDashboard } from '../context/DashboardContext';
 
 export default function SchemeCard({ scheme, index = 0, schemeType = 'business' }) {
   const [playing, setPlaying] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [lang, setLang] = useState('en');
   const [guideOpen, setGuideOpen] = useState(false);
+  
+  const { t, lang } = useLanguage();
+  const { saveScheme, removeSavedScheme, isSaved, addRecentlyViewed } = useDashboard();
+  const saved = scheme._id ? isSaved(scheme._id) : false;
+
+  useEffect(() => {
+    if (scheme && scheme._id) {
+      addRecentlyViewed({ ...scheme, type: schemeType });
+    }
+  }, [scheme, schemeType]);
 
   const handleTTS = () => {
     const text = TTS.schemeToSpeech(scheme, lang);
@@ -24,7 +35,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
     s >= 80 ? 'score-excellent' : s >= 60 ? 'score-good' : s >= 40 ? 'score-fair' : 'score-low';
 
   const scoreLabel = (s) =>
-    s >= 80 ? 'Excellent' : s >= 60 ? 'Good' : s >= 40 ? 'Fair' : 'Partial';
+    s >= 80 ? t('scheme.excellent') : s >= 60 ? t('scheme.good') : s >= 40 ? t('scheme.fair') : t('scheme.partial');
 
   return (<>
     <div
@@ -67,7 +78,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
             padding: '5px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: 600,
             background: 'rgba(59,130,246,0.06)', color: '#3B82F6', border: '1px solid rgba(59,130,246,0.12)',
           }}>
-            {scheme.deadline || 'Ongoing'}
+            {scheme.deadline || t('scheme.ongoing')}
           </span>
           {scheme.website && (
             <a href={scheme.website} target="_blank" rel="noopener noreferrer" style={{
@@ -75,7 +86,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
               background: '#F3F4F6', color: '#4B5563', textDecoration: 'none',
               transition: 'all 0.2s ease', display: 'inline-flex', alignItems: 'center', gap: '4px',
             }}>
-              Website
+              {t('scheme.website')}
               <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
               </svg>
@@ -85,7 +96,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
 
         {/* Benefits */}
         <div style={{ marginBottom: '16px' }}>
-          <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Benefits</p>
+          <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>{t('scheme.benefits')}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {scheme.benefits?.slice(0, expanded ? undefined : 3).map((b, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
@@ -102,7 +113,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
         {expanded && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', animation: 'fade-in 0.25s ease both' }}>
             <div>
-              <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Eligibility</p>
+              <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>{t('scheme.eligibility')}</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {scheme.eligibility?.map((e, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
@@ -113,7 +124,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
               </div>
             </div>
             <div>
-              <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>How to Apply</p>
+              <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>{t('scheme.howToApply')}</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {scheme.applicationProcess?.map((step, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
@@ -134,7 +145,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
             {/* Required Documents — inline from recommend API */}
             {scheme.requiredDocuments?.length > 0 && (
               <div>
-                <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px' }}>Required Documents</p>
+                <p style={{ fontSize: '0.6875rem', fontWeight: 600, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px' }}>{t('scheme.requiredDocs')}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {scheme.requiredDocuments.map((doc, i) => (
                     <div key={i} style={{
@@ -191,7 +202,7 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
               display: 'flex', alignItems: 'center', gap: '4px',
             }}
           >
-            {expanded ? '← Less' : 'Details →'}
+            {expanded ? t('scheme.less') : t('scheme.details')}
           </button>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
@@ -205,21 +216,35 @@ export default function SchemeCard({ scheme, index = 0, schemeType = 'business' 
                 <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
-                Apply Guide
+                {t('scheme.applyGuide')}
               </button>
             )}
-            <button
-              onClick={() => setLang(l => l === 'en' ? 'hi' : 'en')}
-              style={{
-                padding: '5px 10px', borderRadius: '8px',
-                fontSize: '0.6875rem', fontWeight: 600,
-                background: '#F3F4F6', color: '#6B7280',
-                border: 'none', cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              {lang === 'en' ? 'हिंदी' : 'ENG'}
-            </button>
+            
+            {scheme._id && (
+              <button
+                onClick={() => {
+                  if (saved) removeSavedScheme(scheme._id);
+                  else saveScheme({ ...scheme, type: schemeType });
+                }}
+                style={{
+                  padding: '5px 10px', borderRadius: '8px',
+                  fontSize: '0.6875rem', fontWeight: 600,
+                  background: saved ? 'rgba(11,110,79,0.1)' : '#F3F4F6', 
+                  color: saved ? '#0B6E4F' : '#6B7280',
+                  border: 'none', cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  display: 'flex', alignItems: 'center', gap: '4px'
+                }}
+              >
+                {saved ? (
+                   <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/></svg>
+                ) : (
+                   <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg>
+                )}
+                {saved ? t('scheme.saved') : t('scheme.save')}
+              </button>
+            )}
+
             <button onClick={handleTTS} className={`audio-btn ${playing ? 'playing' : ''}`} title={playing ? 'Stop' : 'Listen'}>
               {playing ? (
                 <svg style={{ width: '14px', height: '14px' }} fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg>

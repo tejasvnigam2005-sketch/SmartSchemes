@@ -9,23 +9,31 @@ import EducationFormPage from './pages/EducationFormPage';
 import ResultsPage from './pages/ResultsPage';
 import UpdatesPage from './pages/UpdatesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
+import DashboardPage from './pages/DashboardPage';
+import { DashboardProvider } from './context/DashboardContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 export default function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <PageTransition>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/explore" element={<ExploreSchemesPage />} />
-          <Route path="/business" element={<BusinessFormPage />} />
-          <Route path="/education" element={<EducationFormPage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="/updates" element={<UpdatesPage />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-        </Routes>
-      </PageTransition>
-    </Router>
+    <LanguageProvider>
+      <DashboardProvider>
+        <Router>
+          <ScrollToTop />
+          <Navbar />
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/explore" element={<ExploreSchemesPage />} />
+              <Route path="/business" element={<BusinessFormPage />} />
+              <Route path="/education" element={<EducationFormPage />} />
+              <Route path="/results" element={<ResultsPage />} />
+              <Route path="/updates" element={<UpdatesPage />} />
+              <Route path="/how-it-works" element={<HowItWorksPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+            </Routes>
+          </PageTransition>
+        </Router>
+      </DashboardProvider>
+    </LanguageProvider>
   );
 }

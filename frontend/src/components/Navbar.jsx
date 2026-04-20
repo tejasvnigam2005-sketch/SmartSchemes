@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t, lang, toggleLang } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -18,10 +20,11 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const links = [
-    { path: '/', label: 'Home' },
-    { path: '/explore', label: 'Explore Schemes' },
-    { path: '/how-it-works', label: 'How It Works' },
-    { path: '/updates', label: 'Updates' },
+    { path: '/', label: t('nav.home') },
+    { path: '/explore', label: t('nav.explore') },
+    { path: '/dashboard', label: t('nav.dashboard') },
+    { path: '/how-it-works', label: t('nav.howItWorks') },
+    { path: '/updates', label: t('nav.updates') },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -85,8 +88,26 @@ export default function Navbar() {
                 <circle cx="11" cy="11" r="8" />
                 <path strokeLinecap="round" d="m21 21-4.35-4.35" />
               </svg>
-              <span style={{ fontSize: '0.8125rem', color: '#9CA3AF' }}>Search schemes...</span>
+              <span style={{ fontSize: '0.8125rem', color: '#9CA3AF' }}>{t('nav.search')}</span>
             </div>
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLang}
+              style={{
+                padding: '6px 12px',
+                borderRadius: '8px',
+                fontSize: '0.8125rem',
+                fontWeight: 600,
+                color: '#0B6E4F',
+                background: 'rgba(11,110,79,0.1)',
+                border: '1px solid rgba(11,110,79,0.2)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              {lang === 'en' ? 'हिंदी' : 'ENG'}
+            </button>
 
             {/* Mobile Toggle */}
             <button

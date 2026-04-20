@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getApplicationGuide } from '../utils/api';
+import { useDashboard } from '../context/DashboardContext';
 
 export default function ApplicationGuide({ schemeType, schemeId }) {
   const [steps, setSteps] = useState([]);
+  const [schemeName, setSchemeName] = useState('Scheme Application');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
+  const { updateProgress } = useDashboard();
 
   const storageKey = `guide_step_${schemeId}`;
 
@@ -16,6 +19,9 @@ export default function ApplicationGuide({ schemeType, schemeId }) {
       try {
         const res = await getApplicationGuide(schemeType, schemeId);
         setSteps(res.data.steps || []);
+        if (res.data.schemeName) {
+          setSchemeName(res.data.schemeName);
+        }
         
         // Load saved progress
         const saved = localStorage.getItem(storageKey);
@@ -35,10 +41,20 @@ export default function ApplicationGuide({ schemeType, schemeId }) {
     }
   }, [schemeId, schemeType, storageKey]);
 
+  useEffect(() => {
+    // Initial sync of progress on load if steps exist
+    if (steps.length > 0) {
+      updateProgress(schemeId, schemeName, currentStep, steps.length);
+    }
+  }, [steps.length, currentStep, schemeId, schemeName]);
+
   const goToStep = (index) => {
     if (index >= 0 && index <= steps.length) {
       setCurrentStep(index);
       localStorage.setItem(storageKey, index.toString());
+      if (steps.length > 0) {
+        updateProgress(schemeId, schemeName, index, steps.length);
+      }
     }
   };
 
